@@ -1,26 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
+import { use } from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+
+
 
 //create your first component
 const Home = () => {
+	const [activeLight, setActiveLight] = useState("")
 	return (
-		<div className="text-center">
-            
-
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<div className="d-flex flex-column align-items-center bg-dark rounded-4 p-4 mx-auto mt-5" style={{ width: "120px" }}>
+			{/* Luz roja */}
+			<div className={`bg-danger rounded-circle mb-3 ${activeLight == "red" ?  "border border-light border-3" : ""} `}   
+				style={{ width: "70px", height: "70px" }}
+				onClick={() => {setActiveLight("red") }}
+				></div>
+			{/* Luz amarilla */}
+			<div className={`bg-warning rounded-circle mb-3 ${activeLight == "yellow" ? " border border-light border-3" : ""} `}
+				style={{ width: "70px", height: "70px" }}
+				onClick={() => {setActiveLight("yellow")}}
+				></div>
+			{/* Luz verde */}
+			<div className={`bg-success rounded-circle mb-3 ${activeLight == "green" ? " border border-light border-3" : ""} `}
+				style={{ width: "70px", height: "70px" }}
+				onClick={() => {setActiveLight("green")}}
+				></div>
 		</div>
 	);
 };
